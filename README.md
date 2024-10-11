@@ -1,6 +1,12 @@
 # shoe_gallery
 
-A new Flutter project.
+Flutter Activity for IOS Application Development.
+
+Activity #3 - Product Gallery
+-> Create a Product Gallery using flutter layouts.
+
+Members:
+Caballero, Castro, Cleofas, Chin, Escalona, Miling 
 
 ## Getting Started
 
