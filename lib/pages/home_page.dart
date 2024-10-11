@@ -12,18 +12,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  void Function()? returnIntro;
 
   // the selected index is to control the bottom nav bar
   int _selectedIndex = 0;
 
   // the method will update the selected index
   // when the user taps on the bottom nav bar
-  void navigationBottomBar(int index){
+  void navigationBottomBar(int index) {
     setState(() {
       _selectedIndex = index;
-  });
-
-}
+    });
+  }
 
   //pages to display
   final List<Widget> _pages = [
@@ -44,85 +44,80 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: Builder(
-          builder: (context) {
-            return IconButton(
-              icon: const Padding(
-                padding:  EdgeInsets.only(left: 12.0),
-                child:  Icon(
+        leading: Builder(builder: (context) {
+          return IconButton(
+            icon: const Padding(
+              padding: EdgeInsets.only(left: 12.0),
+              child: Icon(
                 Icons.menu,
                 color: Colors.black,
-                            ),
               ),
-            onPressed: (){
+            ),
+            onPressed: () {
               Scaffold.of(context).openDrawer();
-              },
-            );
-          }
-        ),
+            },
+          );
+        }),
       ),
-      drawer:  Drawer(
+      drawer: Drawer(
         backgroundColor: Colors.grey[900],
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-           Column(
-            children: [
-               //logo
-            DrawerHeader(
-              child: Image.asset('lib/images/nikelogo.png',
-              color: Colors.white,
-              ),
-            ),
+            Column(
+              children: [
+                //logo
+                DrawerHeader(
+                  child: Image.asset(
+                    'lib/images/nikelogo.png',
+                    color: Colors.white,
+                  ),
+                ),
 
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Divider(
+                    color: Colors.grey[800],
+                  ),
+                ),
+
+                //other pages
+                const Padding(
+                  padding: EdgeInsets.only(left: 25.0),
+                  child: ListTile(
+                    leading: Icon(Icons.home, color: Colors.white),
+                    title: Text(
+                      'Home',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+
+                const Padding(
+                  padding: EdgeInsets.only(left: 25.0),
+                  child: ListTile(
+                    leading: Icon(Icons.info, color: Colors.white),
+                    title: Text(
+                      'About',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Divider(
-                color: Colors.grey[800],
-              ),
-            ),
-
-            //other pages
-            const Padding(
-              padding: EdgeInsets.only(left: 25.0),
+              padding: const EdgeInsets.only(left: 25.0, bottom: 25),
               child: ListTile(
-                leading: Icon(
-                Icons.home,
-                color: Colors.white
-                ),
-                title: Text(
-                  'Home',
-                  style: TextStyle(color: Colors.white),),
-                ),
-            ),
-
-
-            const Padding(
-              padding: EdgeInsets.only(left: 25.0),
-              child: ListTile(
-                leading: Icon(
-                Icons.info,
-                color: Colors.white
-                ),
-                title: Text(
-                  'About',
-                  style: TextStyle(color: Colors.white),),
-                ),
-            ),
-            ],
-           ),
-
-            const Padding(
-              padding: EdgeInsets.only(left: 25.0, bottom: 25),
-              child: ListTile(
-                leading: Icon(
-                Icons.logout,
-                color: Colors.white
-                ),
-                title: Text(
+                leading: const Icon(Icons.logout, color: Colors.white),
+                title: const Text(
                   'Logout',
-                  style: TextStyle(color: Colors.white),),
+                  style: TextStyle(color: Colors.white),
                 ),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                },
+              ),
             )
           ],
         ),

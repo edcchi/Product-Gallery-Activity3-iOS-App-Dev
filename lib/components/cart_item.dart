@@ -5,21 +5,20 @@ import '../models/shoe.dart';
 
 class CartItem extends StatefulWidget {
   Shoe shoe;
-  CartItem({super.key,
-   required this.shoe,
-   });
+  CartItem({
+    super.key,
+    required this.shoe,
+  });
 
   @override
   State<CartItem> createState() => _CartItemState();
 }
 
 class _CartItemState extends State<CartItem> {
-
   //remove item from cart
-  void removeItemFromCart(){
+  void removeItemFromCart() {
     Provider.of<Cart>(context, listen: false).removeItemFromCart(widget.shoe);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +33,9 @@ class _CartItemState extends State<CartItem> {
         title: Text(widget.shoe.name),
         subtitle: Text(widget.shoe.price),
         trailing: IconButton(
-          icon: Icon(Icons.delete),
+          icon: const Icon(Icons.delete),
           onPressed: removeItemFromCart,
-          ),
-      
+        ),
       ),
     );
   }
